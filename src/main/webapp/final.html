@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <meta charset=utf-8>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/lib/require-1.0.5/require.js"></script>
+    <script>
+        require.config({
+            paths: {
+                "base": "js/min",
+                'jquery': 'js/lib/jquery-1.7.1.min',
+                'jquery-encoder': 'js/lib/jquery-encoder-0.1.0'
+            }
+        });
+        require(["base"]);
+    </script>
+</head>
+<body>
+<div id="patientSearchArea">
+    <h3 class="header">PATIENT DATABASE</h3>
+    <input id="searchField" type="text" size="32" autofocus="true" tabindex="1" value="191212121212"><button id="searchButton" tabindex="2">S&ouml;k</button>
+    <h3 class="header"><div id="patientInfo" class="header"></div></h3>
+    <textarea id="medicationList" name="Text" rows="10" cols="40" tabindex="3"></textarea>
+</div>
+</body>
+</html>

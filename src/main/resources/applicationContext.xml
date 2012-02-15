@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+       default-autowire="no">
+
+    <context:component-scan base-package="se.johnwilander.rest" />
+    <context:annotation-config/>
+
+    <!-- Factories -->
+    <bean id="personnummerFactory" class="se.johnwilander.personnummer.PersonnummerFactory" scope="singleton"></bean>
+    <bean id="patientFactory" class="se.johnwilander.patient.PatientFactory" scope="singleton"></bean>
+    <bean id="medicationFactory" class="se.johnwilander.medication.MedicationFactory" scope="singleton"></bean>
+
+    <!-- Patient database -->
+    <bean id="patientDataBase" class="se.johnwilander.patient.PatientDb" scope="singleton">
+        <constructor-arg>
+            <list>
+                <bean factory-bean="patientFactory" factory-method="createPatient">
+                    <constructor-arg>
+                        <bean factory-bean="personnummerFactory" factory-method="createPersonnummer">
+                            <constructor-arg type="java.lang.String"><value>191212121212</value></constructor-arg>
+                        </bean>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <list>
+                            <bean factory-bean="medicationFactory" factory-method="createMedication">
+                                <constructor-arg type="java.lang.String"><value>Alvedon</value></constructor-arg>
+                                <constructor-arg>
+                                    <bean class="se.johnwilander.medication.MedicationUnit" factory-method="valueOf">
+                                        <constructor-arg>
+                                            <value>MILLIGRAM</value>
+                                        </constructor-arg>
+                                    </bean>
+                                </constructor-arg>
+                                <constructor-arg type="float">
+                                    <value>200.0</value>
+                                </constructor-arg>
+                            </bean>
+                            <bean factory-bean="medicationFactory" factory-method="createMedication">
+                                <constructor-arg type="java.lang.String"><value>Bisoprolol Actavis</value></constructor-arg>
+                                <constructor-arg>
+                                    <bean class="se.johnwilander.medication.MedicationUnit" factory-method="valueOf">
+                                        <constructor-arg>
+                                            <value>MILLIGRAM</value>
+                                        </constructor-arg>
+                                    </bean>
+                                </constructor-arg>
+                                <constructor-arg type="float">
+                                    <value>10.0</value>
+                                </constructor-arg>
+                            </bean>
+                        </list>
+                    </constructor-arg>
+                </bean>
+                <bean factory-bean="patientFactory" factory-method="createPatient">
+                    <constructor-arg>
+                        <bean factory-bean="personnummerFactory" factory-method="createPersonnummer">
+                            <constructor-arg type="java.lang.String"><value>191111111116</value></constructor-arg>
+                        </bean>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <list>
+                            <bean factory-bean="medicationFactory" factory-method="createMedication">
+                                <constructor-arg type="java.lang.String"><value>Panodil</value></constructor-arg>
+                                <constructor-arg>
+                                    <bean class="se.johnwilander.medication.MedicationUnit" factory-method="valueOf">
+                                        <constructor-arg>
+                                            <value>MILLIGRAM</value>
+                                        </constructor-arg>
+                                    </bean>
+                                </constructor-arg>
+                                <constructor-arg type="float">
+                                    <value>200.0</value>
+                                </constructor-arg>
+                            </bean>
+                            <bean factory-bean="medicationFactory" factory-method="createMedication">
+                                <constructor-arg type="java.lang.String"><value>Oculac</value></constructor-arg>
+                                <constructor-arg>
+                                    <bean class="se.johnwilander.medication.MedicationUnit" factory-method="valueOf">
+                                        <constructor-arg>
+                                            <value>MILLILITER</value>
+                                        </constructor-arg>
+                                    </bean>
+                                </constructor-arg>
+                                <constructor-arg type="float">
+                                    <value>50.0</value>
+                                </constructor-arg>
+                            </bean>
+                        </list>
+                    </constructor-arg>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>

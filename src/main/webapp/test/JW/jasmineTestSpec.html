@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jasmine Spec Runner</title>
+
+    <!-- Jasmine -->
+    <link rel="shortcut icon" type="image/png" href="../lib/jasmine-1.1.0/jasmine_favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="../lib/jasmine-1.1.0/jasmine.css">
+    <script src="../lib/jasmine-1.1.0/jasmine.js"></script>
+    <script src="../lib/jasmine-1.1.0/jasmine-html.js"></script>
+
+    <!-- Require.js -->
+    <script data-main="../../js/base" src="../../js/lib/require-1.0.5/require.js"></script>
+
+    <!-- Live.js -->
+    <!-- Used for auto-refresh of the unit test page. Currently doesn't work in Chrome
+         since "data:text/css" is considered cross-origin and not allowed over Ajax. -->
+    <script src="../lib/live-4/live.js"></script>
+
+    <!-- Spec files -->
+    <script src="patient/PatientSpec.js"></script>
+    <script src="personnummer/PersonnummerSpec.js"></script>
+    <script src="proxy/proxySpec.js"></script>
+
+    <script>
+
+        (function() {
+            var jasmineEnv = jasmine.getEnv();
+            jasmineEnv.updateInterval = 1000;
+
+            var trivialReporter = new jasmine.TrivialReporter();
+
+            jasmineEnv.addReporter(trivialReporter);
+
+            jasmineEnv.specFilter = function(spec) {
+                return trivialReporter.specFilter(spec);
+            };
+
+            var currentWindowOnload = window.onload;
+
+            window.onload = function() {
+                if (currentWindowOnload) {
+                    currentWindowOnload();
+                }
+                execJasmine();
+            };
+
+            function execJasmine() {
+                jasmineEnv.execute();
+            }
+
+        })();
+    </script>
+
+</head>
+
+<body>
+</body>
+</html>
