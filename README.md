@@ -1,6 +1,6 @@
 ## JavaScript Tutorial (for Java Developers) by [@johnwilander](https://twitter.com/johnwilander)
 
-A tutorial covering JavaScript design patterns, dependency handling and builds with [require.js](http://requirejs.org/), unit testing with [Jasmine](http://pivotal.github.com/jasmine/), simple DOM manipulation and Ajax calls with [jQuery](http://jquery.com/), and client-side encoding with [jQuery Encoder](https://github.com/chrisisbeef/jquery-encoder).
+A tutorial covering JavaScript design patterns, dependency handling and builds with [require.js](http://requirejs.org/), unit testing with [Jasmine](https://jasmine.github.io/), simple DOM manipulation and Ajax calls with [jQuery](http://jquery.com/), and client-side encoding with [jQuery Encoder](https://github.com/chrisisbeef/jquery-encoder).
 
 ### Brendan Eich's Kind Intro
 Brendan Eich, the creator of JavaScript and the CTO of Mozilla, was kind enough to record a short intro for this tutorial. [Check it out](http://videos-cdn.mozilla.net/serv/drafts/Brendan-60fps-720p-MPEG-4.webm).
